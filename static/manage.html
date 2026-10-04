@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manage services</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%2312110e'/%3E%3Crect x='3' y='3' width='10' height='10' fill='%23c6a36a'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <p class="kicker">ITIL 5</p>
+      <h1>Manage services</h1>
+      <p class="lede">Add, edit, or remove the configuration items this board probes.</p>
+    </div>
+    <div class="top-side">
+      <nav class="nav" aria-label="Pages">
+        <a href="/">Board</a>
+        <a href="/manage" aria-current="page">Manage</a>
+      </nav>
+    </div>
+  </header>
+  <div class="manage">
+    <section class="panel">
+      <header class="panel-h">
+        <h2>Catalogue</h2>
+        <p id="count">Loading</p>
+      </header>
+      <div id="list"></div>
+    </section>
+    <section class="panel">
+      <header class="panel-h">
+        <h2 id="editor-title">Add a service</h2>
+        <p id="editor-sub">HTTP or HTTPS</p>
+      </header>
+      <form id="editor">
+        <label>Name
+          <input name="name" required maxlength="80" autocomplete="off">
+        </label>
+        <label class="wide">URL
+          <input name="url" required maxlength="2000" spellcheck="false" autocapitalize="off" placeholder="https://service.example/health" autocomplete="off">
+        </label>
+        <label>Owner
+          <input name="owner" maxlength="80" placeholder="Unassigned" autocomplete="off">
+        </label>
+        <label>Criticality
+          <select name="criticality">
+            <option value="high">High</option>
+            <option value="medium" selected>Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </label>
+        <label>Availability %
+          <input name="availabilityTarget" type="number" min="0" max="100" step="0.1" value="99.9" required>
+        </label>
+        <label>Latency ms
+          <input name="latencyTargetMs" type="number" min="1" max="60000" value="500" required>
+        </label>
+        <label>Timeout ms
+          <input name="timeoutMs" type="number" min="100" max="15000" value="4000" required>
+        </label>
+        <div class="form-actions">
+          <button type="submit" id="save">Add service</button>
+          <button type="button" class="ghost" id="cancel" hidden>Cancel</button>
+        </div>
+      </form>
+      <p class="help">Link-local and metadata addresses are blocked. Changing a URL starts a new measurement window.</p>
+      <p class="error" id="form-error" role="alert"></p>
+    </section>
+  </div>
+  <script src="/static/manage.js"></script>
+</body>
+</html>
