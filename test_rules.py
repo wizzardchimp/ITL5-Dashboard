@@ -1,6 +1,6 @@
 import unittest
 
-from rules import (
+from itl5_dashboard.rules import (
     action_for,
     availability_percent,
     classify,

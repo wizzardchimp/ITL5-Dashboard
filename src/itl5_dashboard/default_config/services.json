@@ -1,0 +1,49 @@
+{
+  "port": 8787,
+  "intervalSeconds": 15,
+  "historyHours": 24,
+  "incidentThreshold": 2,
+  "services": [
+    {
+      "id": "self",
+      "name": "Health board",
+      "url": "http://127.0.0.1:8787/health",
+      "owner": "Platform",
+      "criticality": "high",
+      "availabilityTarget": 99.9,
+      "latencyTargetMs": 200,
+      "timeoutMs": 3000
+    },
+    {
+      "id": "example",
+      "name": "Example",
+      "url": "https://example.com/",
+      "owner": "External",
+      "criticality": "low",
+      "availabilityTarget": 99.0,
+      "latencyTargetMs": 800,
+      "timeoutMs": 5000
+    },
+    {
+      "id": "google-204",
+      "name": "Google connectivity",
+      "url": "https://www.google.com/generate_204",
+      "owner": "External",
+      "criticality": "medium",
+      "availabilityTarget": 99.9,
+      "latencyTargetMs": 500,
+      "timeoutMs": 5000
+    },
+    {
+      "id": "edge-cache",
+      "name": "Edge cache",
+      "url": "synthetic://edge-cache",
+      "owner": "Platform",
+      "criticality": "high",
+      "availabilityTarget": 99.5,
+      "latencyTargetMs": 300,
+      "timeoutMs": 3000,
+      "synthetic": true
+    }
+  ]
+}

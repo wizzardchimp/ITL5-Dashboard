@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "itl5-dashboard"
+version = "0.1.0"
+description = "Live ITIL 5 service health dashboard"
+requires-python = ">=3.9"
+dependencies = [
+  "fastapi==0.115.6",
+  "uvicorn==0.32.1",
+]
+
+[project.scripts]
+itl5-dashboard = "itl5_dashboard.server:main"
+
+[project.urls]
+Homepage = "https://github.com/wizzardchimp/ITL5-Dashboard"
+Repository = "https://github.com/wizzardchimp/ITL5-Dashboard"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+itl5_dashboard = ["static/*", "default_config/*"]
